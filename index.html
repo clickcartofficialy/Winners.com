@@ -1,18 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Winners - Login</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winners Play</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h2>Winners</h2>
 
-  <input id="username" placeholder="Enter Username">
-  <input id="password" placeholder="Enter Password" type="password">
+<!-- HEADER -->
+<header>
+  <h2 class="logo">Winners Play</h2>
+  <nav>
+      <a href="#">Home</a>
+      <a href="#">Casino</a>
+      <a href="#">Sports</a>
+      <a href="#">Live Games</a>
+  </nav>
+  <div class="auth-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+  </div>
+</header>
 
-  <button onclick="login()">Login</button>
-  <p id="msg"></p>
+<!-- HERO BANNER -->
+<section class="hero">
+  <h1>Welcome to Winners Play</h1>
+  <p>Play Games • Place Bets • Win Coins 🪙</p>
+  <button class="start-btn">Start Playing</button>
+</section>
 
-  <script src="script.js"></script>
+<!-- GAME CARDS -->
+<section class="games">
+  <h2>Popular Casino Games</h2>
+  <div class="cards">
+      <div class="card">🎰 Slot Machine</div>
+      <div class="card">🎲 Dice Game</div>
+      <div class="card">🃏 Cards</div>
+      <div class="card">🔢 Number Wheel</div>
+  </div>
+</section>
+
+<!-- SPORTS SECTION -->
+<section class="sports">
+  <h2>Live Sports Betting</h2>
+  <div class="match">
+      <span>Cricket: India 🇮🇳 vs Australia 🇦🇺</span>
+      <button>Bet Now</button>
+  </div>
+  <div class="match">
+      <span>Football: FC Goa vs Mohun Bagan</span>
+      <button>Bet Now</button>
+  </div>
+  <div class="match">
+      <span>UFC Fight: Jon Jones vs Gane</span>
+      <button>Bet Now</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Winners Play | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
