@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Admin Panel - Winners</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Winners Play</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Admin Panel</h2>
 
-<input id="targetUser" placeholder="Enter Username">
-<input id="amount" placeholder="Coins">
+  <h2 style="margin-top:20px;">Admin Panel</h2>
 
-<button onclick="addCoins()">Add Coins</button>
-<button onclick="removeCoins()">Remove Coins</button>
+  <p>Logged in as: <span id="adminName"></span></p>
 
-<p id="msg"></p>
+  <input id="targetUser" placeholder="Target Username">
+  <input id="amount" placeholder="Coins (number)">
 
-<a href="dashboard.html">Back</a>
+  <button onclick="adminAddCoins()">Add Coins</button>
+  <button onclick="adminRemoveCoins()">Remove Coins</button>
 
-<script src="script.js"></script>
+  <p id="adminMsg"></p>
+
+  <br>
+  <a href="dashboard.html">Back to Dashboard</a>
+  <br>
+  <button onclick="logout()">Logout</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
