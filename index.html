@@ -6,62 +6,49 @@
 <title>Winners Play</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
 <header>
   <h2 class="logo">Winners Play</h2>
   <nav>
-      <a href="#">Home</a>
-      <a href="#">Casino</a>
-      <a href="#">Sports</a>
-      <a href="#">Live Games</a>
+    <a href="#">Home</a>
+    <a href="#games">Games</a>
+    <a href="#trading">Trading</a>
   </nav>
   <div class="auth-buttons">
-      <button class="login-btn">Login</button>
-      <button class="register-btn">Register</button>
+    <button class="login-btn">Login</button>
+    <button class="register-btn">Register</button>
   </div>
 </header>
 
-<!-- HERO BANNER -->
 <section class="hero">
   <h1>Welcome to Winners Play</h1>
-  <p>Play Games • Place Bets • Win Coins 🪙</p>
+  <p>Play Games • Trade Fake Coins • All Controlled by Admin</p>
   <button class="start-btn">Start Playing</button>
 </section>
 
-<!-- GAME CARDS -->
-<section class="games">
-  <h2>Popular Casino Games</h2>
+<section class="games" id="games">
+  <h2>Casino Style Games</h2>
   <div class="cards">
-      <div class="card">🎰 Slot Machine</div>
-      <div class="card">🎲 Dice Game</div>
-      <div class="card">🃏 Cards</div>
-      <div class="card">🔢 Number Wheel</div>
+    <div class="card">🎰 Slots</div>
+    <div class="card">🎲 Dice</div>
+    <div class="card">🃏 Cards</div>
+    <div class="card">💣 Mines</div>
   </div>
 </section>
 
-<!-- SPORTS SECTION -->
-<section class="sports">
-  <h2>Live Sports Betting</h2>
-  <div class="match">
-      <span>Cricket: India 🇮🇳 vs Australia 🇦🇺</span>
-      <button>Bet Now</button>
-  </div>
-  <div class="match">
-      <span>Football: FC Goa vs Mohun Bagan</span>
-      <button>Bet Now</button>
-  </div>
-  <div class="match">
-      <span>UFC Fight: Jon Jones vs Gane</span>
-      <button>Bet Now</button>
+<section class="trading" id="trading">
+  <h2>Fake Coin Trading</h2>
+  <p>Price moves UP or DOWN only when admin changes it.</p>
+  <div class="fake-chart-info">
+    <p>Login to see live chart & trade panel.</p>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Winners Play | All Rights Reserved</p>
+  <p>© 2025 Winners Play | Games + Fake Trading</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
