@@ -1,136 +1,134 @@
-/* Global */
+/* GLOBAL */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background: #0d0d0d;
   color: white;
+  text-align: center;
 }
 
-/* Header */
+input, button, select, a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+button {
+  background: #00ff99;
+  color: #000;
+  font-weight: bold;
+}
+
+a {
+  color: #00ff99;
+  text-decoration: none;
+}
+
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #111;
-  padding: 15px 20px;
-  box-shadow: 0 2px 10px black;
+  padding: 12px 16px;
+  box-shadow: 0 2px 10px #000;
 }
 
 .logo {
   color: #00ff99;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
 nav a {
-  margin: 0 12px;
+  margin: 0 8px;
   color: #ccc;
-  text-decoration: none;
-  font-size: 16px;
 }
 
 nav a:hover {
-  color: white;
+  color: #fff;
 }
 
 .auth-buttons button {
-  margin-left: 8px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  margin-left: 5px;
 }
 
-.login-btn {
-  background: #00ff99;
-  color: black;
-}
-
-.register-btn {
-  background: white;
-  color: black;
-}
-
-/* Hero Section */
+/* HERO */
 .hero {
-  text-align: center;
-  padding: 70px 20px;
-  background: linear-gradient(140deg, #0f0f0f, #131313, #1a1a1a);
+  padding: 60px 20px;
+  background: linear-gradient(145deg, #111, #151515, #1b1b1b);
 }
 
 .hero h1 {
-  font-size: 35px;
+  font-size: 30px;
   color: #00ff99;
 }
 
 .hero p {
-  font-size: 18px;
-  margin: 10px 0;
   color: #ccc;
+  margin-top: 8px;
 }
 
-.start-btn {
-  margin-top: 15px;
-  padding: 12px 25px;
-  border: none;
-  font-weight: bold;
-  border-radius: 6px;
-  background: #00ff99;
-  color: black;
-}
-
-/* Game Cards Section */
+/* GAMES */
 .games {
-  padding: 30px 20px;
-  text-align: center;
+  padding: 25px 10px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  padding: 15px;
+  gap: 10px;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 .card {
-  background: #1b1b1b;
-  padding: 25px 10px;
+  background: #1a1a1a;
+  padding: 20px 5px;
   border-radius: 10px;
-  font-size: 20px;
   box-shadow: 0 0 10px #000;
 }
 
-/* Sports */
-.sports {
-  padding: 30px 20px;
+/* TRADING SECTION */
+.trading {
+  padding: 25px 10px 40px;
 }
 
-.match {
-  background: #1c1c1c;
+.fake-chart-info {
+  max-width: 350px;
+  margin: 0 auto;
+  background: #161616;
   padding: 15px;
-  margin: 10px 0;
   border-radius: 10px;
+}
+
+/* CHART COMMON */
+.chart {
+  max-width: 350px;
+  height: 120px;
+  margin: 15px auto;
+  background: #111;
+  border-radius: 8px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  padding: 6px;
+  gap: 4px;
 }
 
-.match button {
-  padding: 8px 15px;
+.bar {
+  flex: 1;
   background: #00ff99;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  color: black;
+  border-radius: 3px 3px 0 0;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
-  text-align: center;
   padding: 20px;
   background: #111;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 13px;
   color: #777;
 }
