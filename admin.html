@@ -8,23 +8,48 @@
 </head>
 <body>
 
-  <h2 style="margin-top:20px;">Admin Panel</h2>
+<h2>Admin Panel</h2>
+<p>Logged in as: <span id="adminName"></span></p>
 
-  <p>Logged in as: <span id="adminName"></span></p>
+<hr>
 
-  <input id="targetUser" placeholder="Target Username">
-  <input id="amount" placeholder="Coins (number)">
+<h3>🪙 Coin Control</h3>
+<input id="targetUser" placeholder="Target Username">
+<input id="amount" placeholder="Coins (number)">
+<button onclick="adminAddCoins()">Add Coins</button>
+<button onclick="adminRemoveCoins()">Remove Coins</button>
+<p id="adminMsg"></p>
 
-  <button onclick="adminAddCoins()">Add Coins</button>
-  <button onclick="adminRemoveCoins()">Remove Coins</button>
+<hr>
 
-  <p id="adminMsg"></p>
+<h3>🎮 Game Control</h3>
+<p>Select how hard the game should be:</p>
+<select id="gameModeSelect">
+  <option value="random">Random (50% win)</option>
+  <option value="forceWin">Always Win</option>
+  <option value="forceLose">Always Lose</option>
+</select>
+<br><br>
+<button onclick="saveGameMode()">Save Game Mode</button>
+<p id="gameMsg"></p>
 
-  <br>
-  <a href="dashboard.html">Back to Dashboard</a>
-  <br>
-  <button onclick="logout()">Logout</button>
+<hr>
 
-  <script src="script.js"></script>
+<h3>📈 Trading Chart Control</h3>
+<p>Admin decides when price goes UP or DOWN.</p>
+<p>Current Price: <span id="currentPriceAdmin"></span></p>
+<div id="adminChart" class="chart"></div>
+<br>
+<button onclick="priceUp()">Price Up (+5)</button>
+<button onclick="priceDown()">Price Down (-5)</button>
+<button onclick="resetPrice()">Reset Price</button>
+<p id="priceMsg"></p>
+
+<br><br>
+<a href="dashboard.html">Back to Dashboard</a>
+<br><br>
+<button onclick="logout()">Logout</button>
+
+<script src="script.js"></script>
 </body>
 </html>
