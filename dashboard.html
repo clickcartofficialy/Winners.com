@@ -8,20 +8,30 @@
 </head>
 <body>
 
-  <h2 style="margin-top:20px;">User Dashboard</h2>
+<h2>User Dashboard</h2>
 
-  <h3>Welcome: <span id="dashUser"></span></h3>
-  <h3>Balance: <span id="dashBalance"></span> Coins</h3>
+<h3>Welcome: <span id="dashUser"></span></h3>
+<h3>Balance: <span id="dashBalance"></span> Coins</h3>
 
-  <button onclick="fakePlay()">Play (Bet 10 Coins)</button>
+<hr>
 
-  <br><br>
-  <a href="admin.html">Go to Admin Panel</a>
-  <br>
-  <button onclick="logout()">Logout</button>
+<h3>🎮 Game (Cost: 10 Coins)</h3>
+<p>Admin decides easy/hard/random from panel.</p>
+<button onclick="playGame()">Play Game</button>
+<p id="dashMsg"></p>
 
-  <p id="dashMsg"></p>
+<hr>
 
-  <script src="script.js"></script>
+<h3>📈 Fake Trading Chart</h3>
+<p>Price moves only when admin changes it.</p>
+<p>Current Price: <span id="currentPriceUser"></span></p>
+<div id="userChart" class="chart"></div>
+
+<br>
+<a href="admin.html">Admin Panel (only for admin)</a>
+<br><br>
+<button onclick="logout()">Logout</button>
+
+<script src="script.js"></script>
 </body>
 </html>
