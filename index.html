@@ -1,54 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Winners Play</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Winners Play - BlueCoin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- BRIGHT CASINO + BLUE COIN THEME -->
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6ff;
+      color: #111827;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(15,23,42,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    nav a {
+      margin: 0 8px;
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #111827;
+    }
+
+    .auth-buttons button {
+      margin-left: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .register-btn {
+      background: #e5edff;
+      color: #1d4ed8;
+    }
+
+    main {
+      min-height: 100vh;
+      padding: 24px 10px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* LOGIN CARD */
+    #login-screen {
+      max-width: 420px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px 18px 24px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.1);
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    #login-screen h1 {
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+
+    #login-screen p {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      color: #111827;
+      font-size: 14px;
+    }
+
+    input::placeholder {
+      color: #9ca3af;
+    }
+
+    .primary-btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      background: linear-gradient(135deg,#2563eb,#1d4ed8);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .secondary-btn {
+      width: 100%;
+      padding: 9px;
+      margin-top: 8px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #4b5563;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    #loginMsg {
+      margin-top: 8px;
+      font-size: 13px;
+      min-height: 16px;
+      color: #b45309;
+    }
+
+    .tiny-text {
+      margin-top: 14px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* DASHBOARD */
+    #dashboard {
+      display: none;
+      max-width: 1000px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .top-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .card, .panel {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px 12px 14px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.06);
+    }
+
+    .card {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .panel {
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* BLUE COIN ICON */
+    .coin-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #bfdbfe, #2563eb);
+      border: 2px solid #93c5fd;
+      display: inline-block;
+    }
+
+    .coin-label {
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    /* GAMES GRID */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .game-box {
+      background: #f9fafb;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .game-box img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .game-content {
+      padding: 8px 10px 10px;
+    }
+
+    .game-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .game-type {
+      font-size: 11px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+
+    .game-play-btn {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: none;
+      background: #2563eb;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #gameResult {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #b45309;
+      min-height: 16px;
+    }
+
+    /* TRADING */
+    .chart {
+      height: 120px;
+      background: #eff6ff;
+      border-radius: 10px;
+      margin-top: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 6px;
+      gap: 3px;
+    }
+
+    .bar {
+      flex: 1;
+      background: linear-gradient(180deg,#60a5fa,#2563eb);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .muted {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .small-btn {
+      padding: 5px 9px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #374151;
+      cursor: pointer;
+      margin-top: 4px;
+      margin-right: 4px;
+      font-weight: 500;
+    }
+
+    /* ADMIN PANEL */
+    #adminPanel {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .admin-row {
+      margin: 6px 0;
+      font-size: 13px;
+    }
+
+    select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      color: #111827;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 12px;
+      font-size: 11px;
+      color: #6b7280;
+      background: #e5edff;
+      border-top: 1px solid #d1d5db;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 18px 8px 30px; }
+      header { padding: 8px 10px; }
+      .logo { font-size: 18px; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h2 class="logo">Winners Play</h2>
+  <div class="logo">Winners Play</div>
   <nav>
     <a href="#">Home</a>
-    <a href="#games">Games</a>
-    <a href="#trading">Trading</a>
+    <a href="#">Games</a>
+    <a href="#">Trading</a>
   </nav>
   <div class="auth-buttons">
-    <button class="login-btn">Login</button>
-    <button class="register-btn">Register</button>
+    <button class="login-btn" onclick="showLogin()">Login</button>
+    <button class="register-btn" onclick="showLogin()">Register</button>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Welcome to Winners Play</h1>
-  <p>Play Games • Trade Fake Coins • All Controlled by Admin</p>
-  <button class="start-btn">Start Playing</button>
-</section>
+<main>
+  <!-- PHONE LOGIN SCREEN -->
+  <div id="login-screen">
+    <h1>Login to Winners Play</h1>
+    <p>Enter your phone number to continue. Look & feel is real, backend is prank only 😄</p>
 
-<section class="games" id="games">
-  <h2>Casino Style Games</h2>
-  <div class="cards">
-    <div class="card">🎰 Slots</div>
-    <div class="card">🎲 Dice</div>
-    <div class="card">🃏 Cards</div>
-    <div class="card">💣 Mines</div>
-  </div>
-</section>
+    <input id="phoneInput" type="tel" maxlength="15" placeholder="Phone number (e.g. 9876543210)">
+    <input id="pinInput" type="password" maxlength="6" placeholder="4–6 digit PIN / OTP">
 
-<section class="trading" id="trading">
-  <h2>Fake Coin Trading</h2>
-  <p>Price moves UP or DOWN only when admin changes it.</p>
-  <div class="fake-chart-info">
-    <p>Login to see live chart & trade panel.</p>
+    <button class="primary-btn" onclick="handleLogin()">Continue</button>
+    <button class="secondary-btn" onclick="fakeCreate()">Create new account</button>
+
+    <div id="loginMsg"></div>
+
+    <div class="tiny-text">
+      Owner login (secret): phone <b>9999999999</b> & PIN <b>owner123</b>  
+      (Sirf tumhare liye – doston ko mat batana)
+    </div>
   </div>
-</section>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <!-- TOP SUMMARY -->
+    <div class="top-row">
+      <div class="card">
+        <div class="label">Player</div>
+        <div class="value" id="playerName">-</div>
+      </div>
+      <div class="card">
+        <div class="label">BlueCoin Balance</div>
+        <div class="value">
+          <span class="coin-icon"></span>
+          <span id="playerBalance">0</span>
+        </div>
+        <div class="coin-label">BlueCoin • fake in-game token</div>
+      </div>
+      <div class="card">
+        <div class="label">Game Difficulty (for prank)</div>
+        <div class="value" id="modeLabel">Random</div>
+      </div>
+    </div>
+
+    <!-- CASINO GAMES -->
+    <div class="panel">
+      <div class="card-title">Casino Games</div>
+      <div class="games-grid">
+        <div class="game-box">
+          <img src="https://picsum.photos/seed/casino1/400/240" alt="Casino">
+          <div class="game-content">
+            <div class="game-name">Roulette Royale</div>
+            <div class="game-type">Casino</div>
+            <button class="game-play-btn" onclick="playGame('Roulette')">Play</button>
+          </div>
+        </div>
+        <div class="game-box">
+          <img src="https://picsum.photos/seed/casino2/400/240" alt="Casino">
+          <div class="game-content">
+            <div class="game-name">Blackjack Pro</div>
+            <div class="game-type">Casino</div>
+            <button class="game-play-btn" onclick="playGame('Blackjack')">Play</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLOTS GAMES -->
+    <div class="panel">
+      <div class="card-title">Slots</div>
+      <div class="games-grid">
+        <div class="game-box">
+          <img src="https://picsum.photos/seed/slot1/400/240" alt="Slots">
+          <div class="game-content">
+            <div class="game-name">Fruit Storm</div>
+            <div class="game-type">Slot Game</div>
+            <button class="game-play-btn" onclick="playGame('Fruit Storm')">Spin</button>
+          </div>
+        </div>
+        <div class="game-box">
+          <img src="https://picsum.photos/seed/slot2/400/240" alt="Slots">
+          <div class="game-content">
+            <div class="game-name">Mega Reels</div>
+            <div class="game-type">Slot Game</div>
+            <button class="game-play-btn" onclick="playGame('Mega Reels')">Spin</button>
+          </div>
+        </div>
+      </div>
+      <div id="gameResult"></div>
+      <div class="muted">Har game 10 BlueCoin ka hai. Result tum (owner) secretly control kar sakte ho.</div>
+    </div>
+
+    <!-- TRADING GAME -->
+    <div class="panel">
+      <div class="card-title">Trading Game (Fake BlueCoin Price)</div>
+      <div class="label">BlueCoin Price</div>
+      <div class="value">
+        <span class="coin-icon"></span>
+        <span id="priceLabel">-</span>
+      </div>
+      <div class="chart" id="chart"></div>
+      <div class="muted">
+        Price sirf tab change hota hai jab owner niche hidden buttons use karta hai.  
+        Doston ko lagega real chart hai 😈
+      </div>
+    </div>
+
+    <!-- ADMIN ENTRY -->
+    <div class="panel">
+      <div class="muted">
+        Staff access (dost ko bole “ye staff only hai”):  
+        <button class="small-btn" onclick="openAdmin()">Open Staff Tools</button>
+      </div>
+
+      <div id="adminPanel">
+        <hr style="border:none;border-top:1px solid #e5e7eb;margin:10px 0;">
+        <div class="card-title">OWNER CONTROL PANEL</div>
+
+        <div class="admin-row">
+          <b>Game result mode</b><br>
+          <select id="gameModeSelect">
+            <option value="random">Random (50% win)</option>
+            <option value="forceWin">Always WIN</option>
+            <option value="forceLose">Always LOSE</option>
+          </select>
+          <button class="small-btn" onclick="applyGameMode()">Apply</button>
+          <div class="muted" id="gameModeMsg"></div>
+        </div>
+
+        <div class="admin-row">
+          <b>Set BlueCoin balance</b><br>
+          <input id="adminBalanceInput" type="number" placeholder="e.g. 5000">
+          <button class="small-btn" onclick="adminSetBalance()">Update balance</button>
+          <div class="muted" id="balanceMsg"></div>
+        </div>
+
+        <div class="admin-row">
+          <b>Trading control</b><br>
+          <button class="small-btn" onclick="priceUp()">Price UP</button>
+          <button class="small-btn" onclick="priceDown()">Price DOWN</button>
+          <button class="small-btn" onclick="priceReset()">Reset</button>
+          <div class="muted" id="priceMsg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <footer>
-  <p>© 2025 Winners Play | Games + Fake Trading</p>
+  Winners Play • BlueCoin prank platform for friends only. No real money.
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // --- GLOBAL STATE ---
+  let currentPlayer = "";
+  let isOwner = false;
+  let blueCoins = 0;
+  let gameMode = "random"; // random | forceWin | forceLose
+  let priceHistory = [100, 100, 100, 100, 100];
+
+  function showLogin() {
+    document.getElementById("login-screen").style.display = "block";
+    document.getElementById("dashboard").style.display = "none";
+  }
+
+  // PHONE LOGIN HANDLER
+  function handleLogin() {
+    const phone = document.getElementById("phoneInput").value.trim();
+    const pin = document.getElementById("pinInput").value.trim();
+    const msg = document.getElementById("loginMsg");
+
+    if (!phone || !pin) {
+      msg.innerText = "Phone number aur PIN dono daalo.";
+      return;
+    }
+
+    // Owner secret
+    if (phone === "9999999999" && pin === "owner123") {
+      isOwner = true;
+      currentPlayer = "Owner";
+      blueCoins = 999999;
+      msg.innerText = "";
+    } else {
+      isOwner = false;
+      // Dost ke liye friendly naam
+      currentPlayer = "Player " + (phone.slice(-4) || phone);
+      blueCoins = 1000; // default prank balance
+      msg.innerText = "";
+    }
+
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    updateUI();
+  }
+
+  function fakeCreate() {
+    document.getElementById("loginMsg").innerText =
+      "Account created! Ab phone number se login karo.";
+  }
+
+  // GAME LOGIC
+  function playGame(gameName) {
+    const resEl = document.getElementById("gameResult");
+    if (blueCoins < 10) {
+      resEl.innerText = "Not enough BlueCoin!";
+      return;
+    }
+
+    let roll = Math.floor(Math.random() * 100);
+    let win;
+
+    if (gameMode === "random") {
+      win = roll < 50;
+    } else if (gameMode === "forceWin") {
+      win = true;
+    } else {
+      win = false;
+    }
+
+    if (win) {
+      blueCoins = blueCoins - 10 + 30; // +20 profit
+      resEl.innerText = gameName + ": WIN 🎉 | Roll: " + roll;
+    } else {
+      blueCoins = blueCoins - 10;
+      resEl.innerText = gameName + ": LOSE 😈 | Roll: " + roll;
+    }
+
+    updateUI();
+  }
+
+  // ADMIN ENTRY (ONLY OWNER)
+  function openAdmin() {
+    if (!isOwner) {
+      alert("Staff only access.");
+      return;
+    }
+    document.getElementById("adminPanel").style.display = "block";
+  }
+
+  function applyGameMode() {
+    const sel = document.getElementById("gameModeSelect");
+    const msg = document.getElementById("gameModeMsg");
+    gameMode = sel.value;
+    if (gameMode === "random") msg.innerText = "Mode: Random (50% win)";
+    if (gameMode === "forceWin") msg.innerText = "Mode: Always WIN 🔵";
+    if (gameMode === "forceLose") msg.innerText = "Mode: Always LOSE 😈";
+    updateUI();
+  }
+
+  function adminSetBalance() {
+    if (!isOwner) return;
+    const input = document.getElementById("adminBalanceInput");
+    const msg = document.getElementById("balanceMsg");
+    const val = parseInt(input.value || "0");
+    if (isNaN(val) || val < 0) {
+      msg.innerText = "Valid number daalo.";
+      return;
+    }
+    blueCoins = val;
+    msg.innerText = "Balance set to " + val + " BlueCoin";
+    updateUI();
+  }
+
+  // TRADING + CHART
+  function updatePriceDisplay() {
+    const last = priceHistory[priceHistory.length - 1];
+    document.getElementById("priceLabel").innerText = last;
+    const chart = document.getElementById("chart");
+    chart.innerHTML = "";
+    const max = Math.max(...priceHistory);
+    priceHistory.forEach(v => {
+      const bar = document.createElement("div");
+      bar.className = "bar";
+      const h = max ? (v / max) * 100 : 50;
+      bar.style.height = h + "%";
+      chart.appendChild(bar);
+    });
+  }
+
+  function priceUp() {
+    if (!isOwner) return;
+    const last = priceHistory[priceHistory.length - 1];
+    priceHistory.push(last + 10);
+    if (priceHistory.length > 10) priceHistory.shift();
+    document.getElementById("priceMsg").innerText = "Price moved UP 📈";
+    updatePriceDisplay();
+  }
+
+  function priceDown() {
+    if (!isOwner) return;
+    const last = priceHistory[priceHistory.length - 1];
+    priceHistory.push(Math.max(10, last - 10));
+    if (priceHistory.length > 10) priceHistory.shift();
+    document.getElementById("priceMsg").innerText = "Price moved DOWN 📉";
+    updatePriceDisplay();
+  }
+
+  function priceReset() {
+    if (!isOwner) return;
+    priceHistory = [100, 100, 100, 100, 100];
+    document.getElementById("priceMsg").innerText = "Price reset to 100";
+    updatePriceDisplay();
+  }
+
+  // UI UPDATE
+  function updateUI() {
+    document.getElementById("playerName").innerText = currentPlayer || "-";
+    document.getElementById("playerBalance").innerText = blueCoins;
+
+    let modeText = "Random";
+    if (gameMode === "forceWin") modeText = "Always WIN";
+    if (gameMode === "forceLose") modeText = "Always LOSE";
+    document.getElementById("modeLabel").innerText = modeText;
+
+    updatePriceDisplay();
+
+    // Owner to hi admin panel open kar sakta hai
+    if (!isOwner) {
+      document.getElementById("adminPanel").style.display = "none";
+    }
+  }
+
+  // INIT
+  updatePriceDisplay();
+  showLogin();
+</script>
+
 </body>
-</html>
+          </html>
