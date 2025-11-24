@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Dashboard - Winners</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Winners Play</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Dashboard</h2>
-  <h3>Welcome: <span id="user"></span></h3>
 
-  <h3>Balance: <span id="balance"></span> Coins</h3>
+  <h2 style="margin-top:20px;">User Dashboard</h2>
 
-  <a href="admin.html">Admin Panel</a>
+  <h3>Welcome: <span id="dashUser"></span></h3>
+  <h3>Balance: <span id="dashBalance"></span> Coins</h3>
+
+  <button onclick="fakePlay()">Play (Bet 10 Coins)</button>
+
+  <br><br>
+  <a href="admin.html">Go to Admin Panel</a>
+  <br>
   <button onclick="logout()">Logout</button>
 
-<script src="script.js"></script>
+  <p id="dashMsg"></p>
+
+  <script src="script.js"></script>
 </body>
 </html>
